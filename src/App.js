@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import '../src/style.css'
+import Header from "./component/Header";
+import Featured_Product from './component/Featured_Product';
+import Product_Banner from './component/Product_Banner';
+import Testimonials from './component/Testimonials';
+import Footer from './component/Footer';
+import Cart from './component/Cart'
+import Login from './component/Login'
+import PayMent from './component/PayMent';
+import { useSelector } from 'react-redux';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+  Route,
+} from "react-router-dom";
 function App() {
+  const isEdit = useSelector((state) => state.changeEdit.isEdit)
+  const elogin = useSelector((state) => state.getError.login)
+  const stateChangePay = useSelector((state)=>state.changeStatePay.payState)
+  
+  const showForm = () => {
+    if (isEdit) {
+      return <Cart />
+    }
+  }
+  const showFormLogin = () => {
+    if (!elogin) {
+      
+      return <Redirect  to="/" />
+        
+    }
+  }
+
+  const showFormPay = () => {
+    if(stateChangePay){
+      return <PayMent/>
+    }
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div >
+        <Header />
+        <Featured_Product />
+        <Product_Banner />
+        <Testimonials />
+        <Footer />
+        
+        {showForm()}
+        {showFormLogin()}
+        {showFormPay()}
+      </div>
+      <Switch>
+        <Route path="/dashboard" component={Login} />
+        <Route path="/cart" component={Cart} />
+        
+      </Switch>
+    </Router>
   );
 }
-
-export default App;
+export default App
