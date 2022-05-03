@@ -15,6 +15,8 @@ import {
   Redirect,
   Route,
 } from "react-router-dom";
+import Register from './component/Register';
+
 function App() {
   const isEdit = useSelector((state) => state.changeEdit.isEdit)
   const elogin = useSelector((state) => state.getError.login)
@@ -45,8 +47,8 @@ function App() {
       <div >
         <Header />
         <Featured_Product />
-        <Product_Banner />
-        <Testimonials />
+        {/* <Product_Banner />
+        <Testimonials /> */}
         <Footer />
         
         {showForm()}
@@ -56,7 +58,7 @@ function App() {
       <Switch>
         <Route path="/dashboard" component={Login} />
         <Route path="/cart" component={Cart} />
-        
+        <Route path="/register" component={Register} />
       </Switch>
     </Router>
   );

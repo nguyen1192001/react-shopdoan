@@ -48,7 +48,7 @@ function Header() {
                 <a href="#about" className="nav-link">About</a>
               </li>
               <li className="nav-item">
-                <a href="#contact" className="nav-link">Contact</a>
+                <Link to="/register">Register</Link>
               </li>
               
               {
@@ -77,12 +77,12 @@ function Header() {
       {/* hero */}
       <img src="./image/banner.png" className="hero-img" alt="" />
       <div className="hero-content">
-        <h2><span className="discount">70%</span>SALE OFF</h2>
+        <h2><span className="discount">70%</span>SALE OFF - sống là để ăn</h2>
         <h1>
-          <span>Summer Vibes</span>
-          <span>mode on</span>
+          <span>NIỀM ĐAM MÊ ĐỒ ĂN</span>
+          <span>BẤT DIỆT</span>
         </h1>
-        <a href="/" className="btn">Shop now</a>
+        <a href="/" className="btn">Chọn Món Ngay</a>
       </div>
     </header>
   )

@@ -23,29 +23,31 @@ function Cart() {
    dispatch(changeEditStatePay())
   }
 
- console.log("caritem 1",cartItems) 
+ 
   let sum = 0
   cartItems.forEach(element => {
-    return sum = sum + parseFloat(element.price) // totals in cartitems
+    return sum = sum + parseFloat(element.gia) // totals in cartitems
   });
  
+  console.log("carItems",cartItems)
 
   const renderCartList = cartItems.map((item) => {
-    const { id,title, image, price } = item
+
+    const { _id,tensp, hinhanh, gia } = item
     // console.log(item.data)
 
     return (
       <div className="product_cart">
         <div className="pro_icon">
-          <i className="bx bx-x" onClick = {()=>removeItemInCart(id)} />
+          <i className="bx bx-x" onClick = {()=>removeItemInCart(_id)} />
         </div>
         <div className="product-item">
           <div className="product-img">
-            <img src={image} alt="" />
+            <img src={hinhanh} alt="" />
           </div>
-          <h5>{title}</h5>
+          <h5>{tensp}</h5>
         </div>
-        <div className="total-price">${price}</div>
+        <div className="total-price">${gia}</div>
       </div>
     )
   })

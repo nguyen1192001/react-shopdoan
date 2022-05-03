@@ -16,3 +16,10 @@ export const changeEditLogin  = ()=>{
         type:ActionTypes.CHANGE_EDIT_STATE_LOGIN
     }
 }
+export const getAdreeRegister  = (adress)=>{
+    console.log("address in getAddressregister",adress)
+    return{
+        type:ActionTypes.GET_ADDRESS_REGISTER,
+        payload:adress
+    }
+}

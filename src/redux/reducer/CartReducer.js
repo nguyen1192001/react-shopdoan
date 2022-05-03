@@ -22,10 +22,7 @@ export const demoAddToCartReducer = (state = initialsState, { type, payload }) =
         case ActionTypes.REMOVE_ITEM: 
             let listCartChange = state.CartItems;
             let index = listCartChange.findIndex((cart)=>{
-              
-      
-                return cart.id === payload;  
-                
+                return cart._id === payload;  
             })
             if(index !== -1){
                 listCartChange.splice(index,1); 

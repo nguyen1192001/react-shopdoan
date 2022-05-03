@@ -49,20 +49,21 @@ function Featured_Product() {
   }
   // console.log(products)
   const renderProductList = products.map((product) => {
-    const { id, title, image, price } = product
+    console.log(">>>>>>>>>>.",product)
+    const {  _id,tensp, hinhanh, gia } = product
     return (
       <div className="product">
           <div className="product-header">
-            <img src={image} alt="" />
+            <img src={hinhanh} alt="" />
             <ul className="icons">
               <span><i className="bx bx-heart" /></span>
-               <span><i className="bx bx-shopping-bag" onClick={()=>{isChange(id)}} /></span> 
+               <span><i className="bx bx-cart" onClick={()=>{isChange(_id)}} /></span> 
               <span><i className="bx bx-search" /></span>
             </ul>
           </div>
           <div className="product-footer">
             <a href="/">
-              <h3>{title}</h3>
+              <h3>{tensp}</h3>
             </a>
             <div className="rating">
               <i className="bx bxs-star" />
@@ -71,7 +72,7 @@ function Featured_Product() {
               <i className="bx bxs-star" />
               <i className="bx bxs-star" />
             </div>
-            <h4 className="price">${price}</h4>
+            <h4 className="price">${gia}</h4>
           </div>
       </div>
     )

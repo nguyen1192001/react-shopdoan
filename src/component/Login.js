@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { getErrorLogin, getUserLogin } from '../redux/actions/login';
 import {  setUserSession } from '../Utils/Common';
 
@@ -14,10 +15,10 @@ function Login() {
     const elogin = useSelector((state) => state.getError.login)
     const cartItems = useSelector((state) => state.getcartItemsdemo.CartItems)
     const user = useSelector((state)=>state.getError.user)
-    const login = () => {
-        loginApi()
-        console.log(">>>>>>>>>>>>>>>>", elogin) 
-    }
+    // const login = () => {
+    //     loginApi()
+    //     console.log(">>>>>>>>>>>>>>>>", elogin) 
+    // }
 
     const loginApi = () => {
         let data = qs.stringify({ email, password});
@@ -29,10 +30,16 @@ function Login() {
 
         axios.post('http://localhost:4000/user', data, config)
             .then(function (response) {
+
                 dispatch(getErrorLogin(response.data.error))
                 dispatch(getUserLogin(response.data))
-                if(response.data.data){ 
-                    setUserSession(true,response.data.data,cartItems)
+                if(response.data.e){ 
+                    setUserSession(true,response.data.e,cartItems)
+                    Redirect("/")
+                }else{
+                    alert("ktra dang nhap  " +    response.data)
+                    setEmail("")
+                    setPassword("")
                 }
                 
             })
@@ -65,7 +72,7 @@ function Login() {
                     </div>
                 </div>
                 <div className="btn-login" >
-                    <input type="button" value="login" onClick={login} />
+                    <input type="button" value="login" onClick={loginApi} />
                 </div>
 
             </div>
