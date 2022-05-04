@@ -65,7 +65,7 @@ function PayMent() {
 
         axios.post('http://localhost:4000/cart/', data1, config)
             .then(function (response) {
-                console.log(response.data)
+                console.log(">>>>>>> respont cart",response.data)
             })
             .catch(function (error) {
                 console.log(error);

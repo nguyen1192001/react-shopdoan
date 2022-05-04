@@ -50,7 +50,8 @@ function Featured_Product() {
   // console.log(products)
   const renderProductList = products.map((product) => {
     console.log(">>>>>>>>>>.",product)
-    const {  _id,tensp, hinhanh, gia } = product
+    let tennhacc = product.nhacc.tenncc
+    const {  _id,tensp, hinhanh, gia,mota } = product
     return (
       <div className="product">
           <div className="product-header">
@@ -65,6 +66,7 @@ function Featured_Product() {
             <a href="/">
               <h3>{tensp}</h3>
             </a>
+            <h3>Mô Tả : {mota}</h3>
             <div className="rating">
               <i className="bx bxs-star" />
               <i className="bx bxs-star" />
@@ -73,6 +75,7 @@ function Featured_Product() {
               <i className="bx bxs-star" />
             </div>
             <h4 className="price">${gia}</h4>
+            <h4>Quán này là - {tennhacc}</h4>
           </div>
       </div>
     )
